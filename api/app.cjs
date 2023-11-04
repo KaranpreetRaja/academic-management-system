@@ -298,6 +298,41 @@ app.get("/get_all_professors", async (req, res) => {
   }
 });
 
+/*
+Endpoint: get all programs (degrees)
+app.get("/get_all_programs")
+JSON response: 
+[
+  {
+    programId: "programId",
+    programName: "programName",
+    programDescription: "programDescription",
+    programCredits: "programCredits",
+    programCourses: ["courseId1", "courseId2", ...]
+  },
+  ...
+]
+*/
+app.get("/get_all_programs", async (req, res) => {
+  try {
+    // Get all programs from the Firestore database
+    const programsRef = db.collection("programs");
+    const programsSnapshot = await programsRef.get();
+
+    // Create an array of programs
+    const programs = [];
+    programsSnapshot.forEach((doc) => {
+      programs.push(doc.data());
+    });
+
+    // Send a success response
+    res.status(200).json(programs);
+  } catch (error) {
+    // Send an error response
+    res.status(500).send(error.message);
+  }
+});
+
 // app.post(pending_student:id): add a pending student to active students
 
 // app.get(): get all active students
