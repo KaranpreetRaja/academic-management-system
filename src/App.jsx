@@ -4,14 +4,16 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Autocomplete from "react-google-autocomplete";
-import Navi from "../components/nav"
+import Navi from "./components/nav"
+import Login from './pages/login';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Navi></Navi>
+    {/* <Navi></Navi> */}
+    <Login/>
     {/* landing page */}
     </>
   )
