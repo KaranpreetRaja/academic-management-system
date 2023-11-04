@@ -239,6 +239,65 @@ app.post("/create_course", express.json(), async (req, res) => {
   }
 });
 
+/*
+Endpoint: get all courses
+app.get("/get_all_courses")
+JSON response: [{courseId: "courseId", courseName: "courseName", courseDescription: "courseDescription", courseCredits: "courseCredits"}, ...]
+*/
+app.get("/get_all_courses", async (req, res) => {
+  try {
+    // Get all courses from the Firestore database
+    const coursesRef = db.collection("Courses");
+    const coursesSnapshot = await coursesRef.get();
+
+    // Create an array of courses
+    const courses = [];
+    coursesSnapshot.forEach((doc) => {
+      courses.push(doc.data());
+    });
+
+    // Send a success response
+    res.status(200).json(courses);
+  } catch (error) {
+    // Send an error response
+    res.status(500).send(error.message);
+  }
+});
+
+/*
+Endpoint: get all professors
+app.get("/get_all_professors")
+JSON response:
+[
+  {
+    professorId: "professorId",
+    firstName: "firstName",
+    lastName: "lastName",
+    coursesEnrolled: ["courseId1", "courseId2", ...]
+  },
+  ...
+]
+*/
+app.get("/get_all_professors", async (req, res) => {
+  try {
+    // Get all professors from the Firestore database
+    const professorsRef = db.collection("professors");
+    const professorsSnapshot = await professorsRef.get();
+
+    // Create an array of professors
+    const professors = [];
+    professorsSnapshot.forEach((doc) => {
+      professors.push(doc.data());
+    });
+
+    // Send a success response
+    res.status(200).json(professors);
+  } catch (error) {
+    // Send an error response
+    res.status(500).send(error.message);
+  }
+});
+
 // app.post(pending_student:id): add a pending student to active students
 
 // app.get(): get all active students
