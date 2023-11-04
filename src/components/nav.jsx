@@ -17,16 +17,12 @@ function Navi() {
     <>
       <Navbar className="bg-body-tertiary">
         <Container>
-          <img src="../src/assets/react.svg" width="28" class="d-inline-block align-top" alt="" />
-          <Navbar.Brand href="#home">Maple University</Navbar.Brand>
+          <img src="/logo.png" width="28" class="d-inline-block align-top" alt="" />
+          <Navbar.Brand href="/" style={{
+            marginLeft: 10
+          }}> <strong>Maple University</strong> | Department of Engineering </Navbar.Brand>
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <NavDropdown title="Login" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Student</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Professor</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Admin</NavDropdown.Item>
-            </NavDropdown>
-          </Navbar.Collapse>
+          
         </Container>
       </Navbar>
     </>

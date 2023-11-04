@@ -3,14 +3,14 @@ import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Login({ params }) {
+function Login2({ params }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.location = "/student";
+    window.location = "/prof";
   };
 
   return (
@@ -64,4 +64,4 @@ function Login({ params }) {
   );
 }
 
-export default Login;
+export default Login2;

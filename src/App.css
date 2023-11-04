@@ -1,3 +1,32 @@
-/* div{
-  background-color: aqua;
-} */
+.App {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: rgb(240, 240, 240);
+    background-image: url("https://static.vecteezy.com/system/resources/previews/001/878/715/original/autumn-maple-leaves-design-free-vector.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.App .container {
+    margin-top: 200px;
+    display: block;
+    margin: auto;
+    border: 2px solid black;
+    padding: 40px;
+    background-color: white;
+}
+
+.container .btn-danger {
+    border: 2px solid rgb(243, 52, 52);
+    color: rgb(243, 52, 52);
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+}
+
+.container .btn-danger:hover {
+    background-color: rgb(243, 52, 52);
+    color: white;
+}
