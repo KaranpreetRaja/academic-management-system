@@ -43,28 +43,39 @@ Endpoint: add a course to a student's active courses
 app.put("/student_active/add/courses")
 JSON request: {studentId: "studentId", courseId: "courseId"}
 */
-app.put("/student_active/add/courses", express.json(), async (req, res) => {
+app.put("/student_active/add/courses/:id", express.json(), async (req, res) => {
   try {
-    // Check if studentId and course are present in the request body
-    if (!req.body || !req.body.studentId || !req.body.course) {
+    // Check if studentId is present in the request body
+    if (!req.body) {
       return res
         .status(400)
-        .send("Missing studentId or course in the request body");
+        .send("Missing studentId, course, or grade in the request body");
     }
 
-    const studentId = req.body.studentId;
-    const courseToAdd = req.body.course;
+    const studentId = req.params.id;
+    const courseToAdd = req.body.courseToAdd;
 
     // Get the student's document from the Firestore database
     const studentDoc = db.collection("student_active").doc(studentId);
 
-    // Use Firestore's arrayUnion method to add the course to the array
+    // Check if the student document exists
+    const studentSnapshot = await studentDoc.get();
+    if (!studentSnapshot.exists) {
+      return res.status(404).send("Student not found");
+    }
+
+    // Append the new course and grade to the courses array
+    const studentData = studentSnapshot.data();
+    const courses = studentData.courses || [];
+    courses.push(courseToAdd);
+
+    // Update the student document with the updated courses array
     await studentDoc.update({
-      courses: admin.firestore.FieldValue.arrayUnion(courseToAdd),
+      courses: courses,
     });
 
     // Send a success response
-    res.status(200).send("Course added successfully");
+    res.status(200).send("Course and grade added successfully");
   } catch (error) {
     // Send an error response
     res.status(500).send(error.message);
@@ -90,9 +101,15 @@ app.delete("/student_active/:studentId/course/:courseId", async (req, res) => {
   }
 });
 
-// app.get(student_active:id -> courses): get all courses that a student is enrolled in
-// app.post(student_active:id, course:id): add a course to a student's active courses
-// app.delete(student_active:id, course:id): remove a course from a student's active courses
+/*
+Endpoint: get all pending students
+app.get("/student_pending")
+JSON response: [{studentId: "studentId", firstName: "firstName", lastName: "lastName"}, ...]
+*/
+
+/*
+
+*/
 
 // app.get(): get all pending students
 
