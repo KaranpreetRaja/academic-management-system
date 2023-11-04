@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -7,7 +8,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle the form submission logic, like authenticating the user
+    // Handle the form submission logic here
     console.log('Email:', email, 'Password:', password);
   };
 
