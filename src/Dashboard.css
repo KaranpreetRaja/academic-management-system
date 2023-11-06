@@ -3,14 +3,9 @@ h3 {
 }
 
 .outer {
-    margin-top: 20px;
+    margin: 20px auto;
     width: 100%;
     max-width: 1000px;
-}
-
-.wrapper {
-    height: 80vh;
-    overflow: scroll;
 }
 
 .item {
@@ -22,6 +17,11 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+}
+
+.item:hover {
+    border: 1px solid rgb(243, 52, 52);;
 }
 
 .inner {
@@ -29,4 +29,24 @@ h3 {
     background-color: white;
     padding: 40px;
     margin-top: 5px;
+}
+
+.p {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+textarea {
+    width: 300px;
+    margin: 10px 0;
+    padding: 4px 8px;
+    height: 200px;
+}
+
+input {
+    padding: 4px 8px;
+}
+
+label {
+    margin: 10px;
 }

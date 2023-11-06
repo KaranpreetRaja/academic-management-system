@@ -16,6 +16,7 @@
     border: 2px solid black;
     padding: 40px;
     background-color: white;
+    filter: drop-shadow(0 0 0.75rem rgba(167, 167, 167, 0.526));
 }
 
 .container .btn-danger {

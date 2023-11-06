@@ -18,7 +18,10 @@ function Login3({ params }) {
       marginTop: 100
     }}>
       <Container className="mt-5" style={{
-        backgroundColor: "white",
+        backgroundColor: "#fcfcfc",
+        borderWidth: 2,
+        borderColor: "black",
+        borderStyle: "solid",
         width: 900,
         padding: 40,
         paddingTop: 80,
