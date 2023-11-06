@@ -10,7 +10,7 @@ function App() {
     <div className='App'>
       <div className='container'>
         <h1>Academic Management System</h1>
-        <p>Login as: </p>
+        <p>Login as </p>
         <a href='/login/student'><button className='btn btn-danger'>Student</button></a>
         <a href='/login/educator'><button className='btn btn-danger'>Educator</button></a>
         <a href='/login/admin'><button className='btn btn-danger'>Admin</button></a>

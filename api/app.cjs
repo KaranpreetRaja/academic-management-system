@@ -239,6 +239,10 @@ app.post("/create_course", express.json(), async (req, res) => {
   }
 });
 
+// get_course/:id
+//
+
+
 /*
 Endpoint: get all courses
 app.get("/get_all_courses")
